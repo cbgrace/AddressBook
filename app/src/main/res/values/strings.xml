@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">AddressBook</string>
+    <string name="title_bar_text">Address Book</string>
+    <string name="main_add_fab_description_text">Add a contact!</string>
+    <!-- View Contact Fragment -->
+    <string name="view_contact_fragment_message_text">Selected Contact</string>
+    <string name="view_name_text_view_text">Name :    %1$s</string>
+    <string name="view_number_text_view_text">Phone :    %1$s</string>
+    <string name="view_email_text_view_text">E-Mail :    %1$s</string>
+    <string name="view_street_text_view_text">Street :    %1$s</string>
+    <string name="view_city_text_view_text">City :    %1$s</string>
+    <string name="view_state_text_view_text">State :    %1$s</string>
+    <string name="view_zip_text_view_text">Zip :    %1$s</string>
+    <string name="view_close_button_text">Close</string>
+    <string name="view_delete_button_text">Delete</string>
+    <!-- Add Contact Fragment -->
+    <string name="add_name_hint">Name</string>
+    <string name="add_phone_hint">Phone</string>
+    <string name="add_email_hint">E-Mail</string>
+    <string name="add_street_hint">Street</string>
+    <string name="add_city_hint">City</string>
+    <string name="add_state_hint">State</string>
+    <string name="add_zip_hint">Zip</string>
+    <string name="add_save_fab_description">Save!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
