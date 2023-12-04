@@ -13,7 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class RecyclerFragment : Fragment() {
 
     private val contactList = ArrayList<Contact>()
-    private var contactAdapter: ContactAdapter? = null
+    private lateinit var contactAdapter: ContactAdapter
     private lateinit var addButton: FloatingActionButton
 
     override fun onCreateView(
@@ -50,7 +50,7 @@ class RecyclerFragment : Fragment() {
 
     fun setContact(contact: Contact) {
         this.contactList.add(contact)
-        this.contactAdapter?.notifyDataSetChanged()
+        this.contactAdapter.notifyDataSetChanged()
     }
 
     fun getContactList(): ArrayList<Contact> {
