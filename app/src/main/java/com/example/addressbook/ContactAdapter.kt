@@ -1,13 +1,16 @@
 package com.example.addressbook
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ContactAdapter(val activity: MainActivity, var contactList: List<Contact>) :
+class ContactAdapter(val context: Context, var contactList: List<Contact>) :
     RecyclerView.Adapter<ContactAdapter.ContactHolder>() {
+
+        private var activity: MainActivity = context as MainActivity
 
         inner class ContactHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
             var nameTextView = view.findViewById<TextView>(R.id.holder_name_text_view)

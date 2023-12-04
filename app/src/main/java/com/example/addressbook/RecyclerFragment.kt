@@ -13,8 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class RecyclerFragment : Fragment() {
 
     private val contactList = ArrayList<Contact>()
-    private val callingActivity = MainActivity()
-    private val contactAdapter = ContactAdapter(this.callingActivity, this.contactList)
+    private var contactAdapter: ContactAdapter? = null
     private lateinit var addButton: FloatingActionButton
 
     override fun onCreateView(
@@ -28,6 +27,7 @@ class RecyclerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         val layoutManager = LinearLayoutManager(requireContext())
+        this.contactAdapter = ContactAdapter(requireActivity(), this.contactList)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = this.contactAdapter
         recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),
@@ -38,18 +38,19 @@ class RecyclerFragment : Fragment() {
     }
 
     private fun addButtonOnClick() {
-        (activity as MainActivity).replaceFragment(AddContactFragment())
+        (requireActivity() as MainActivity).replaceFragment(AddContactFragment())
     }
 
     fun showContact(positionIndex: Int) {
+        val mainActivity = requireActivity() as MainActivity
         val dialog = ViewContactFragment()
         dialog.setContact(this.contactList[positionIndex])
-        dialog.show(this.callingActivity.supportFragmentManager, "")
+        dialog.show(mainActivity.supportFragmentManager, "")
     }
 
     fun setContact(contact: Contact) {
         this.contactList.add(contact)
-        this.contactAdapter.notifyDataSetChanged()
+        this.contactAdapter?.notifyDataSetChanged()
     }
 
     fun getContactList(): ArrayList<Contact> {

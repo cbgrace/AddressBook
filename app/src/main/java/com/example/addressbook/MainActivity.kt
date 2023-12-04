@@ -24,13 +24,12 @@ class MainActivity : AppCompatActivity() {
 
     fun setContact(contact: Contact) {
         val recyclerFragment = RecyclerFragment()
-        recyclerFragment.setContact(contact)
         this.replaceFragment(recyclerFragment)
+        recyclerFragment.setContact(contact)
     }
 
     fun showContact(positionIndex: Int) {
-        val recyclerFragment = RecyclerFragment()
-        recyclerFragment.showContact(positionIndex)
+        RecyclerFragment().showContact(positionIndex)
     }
 
 }
