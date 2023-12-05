@@ -53,8 +53,20 @@ class ViewContactFragment : DialogFragment() {
     }
 
     private fun deleteButtonHandler() {
-        (requireActivity() as MainActivity).deleteContact(this.currentContact)
-        this.dismiss()
+        val alertDialogBuilder = AlertDialog.Builder(requireContext())
+        alertDialogBuilder.setTitle("Confirm")
+        alertDialogBuilder.setMessage("Are you sure you want to delete this contact?")
+        alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
+            (requireActivity() as MainActivity).deleteContact(this.currentContact)
+            this.dismiss()
+        }
+        alertDialogBuilder.setNegativeButton("No") { dialog, _ ->
+            // Do Nothing...
+            dialog.dismiss()
+        }
+
+        val alertDialog: AlertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 
 }
