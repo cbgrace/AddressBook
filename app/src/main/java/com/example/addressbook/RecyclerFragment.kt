@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.io.IOException
 
 class RecyclerFragment : Fragment() {
 
@@ -37,23 +38,24 @@ class RecyclerFragment : Fragment() {
         this.addButton.setOnClickListener { addButtonOnClick() }
     }
 
-//    override fun onPause() {
-//        super.onPause()
-//        Serializer(requireContext()).save(this.contactList)
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        val serializer = Serializer(requireContext())
-//        try {
-//            val list = serializer.load()
-//            this.contactList.clear()
-//            this.contactList.addAll(list)
-//            this.contactAdapter.notifyDataSetChanged()
-//        } catch (ex: IOException) {
-//            // ??
-//        }
-//    }
+    // maybe change from onStart to onStop ???
+    override fun onStart() {
+        super.onStart()
+        Serializer(requireContext()).save(this.contactList)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val serializer = Serializer(requireContext())
+        try {
+            val list = serializer.load()
+            this.contactList.clear()
+            this.contactList.addAll(list)
+            this.contactAdapter.notifyDataSetChanged()
+        } catch (ex: IOException) {
+            // ??
+        }
+    }
 
     private fun addButtonOnClick() {
         (requireActivity() as MainActivity).replaceFragment(AddContactFragment())
