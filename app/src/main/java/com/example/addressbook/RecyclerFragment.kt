@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.io.IOException
 
 class RecyclerFragment : Fragment() {
 
@@ -42,20 +43,22 @@ class RecyclerFragment : Fragment() {
     // are trying to add...
 //    override fun onPause() {
 //        super.onPause()
-//        Serializer(requireContext()).save(this.contactList)
+//        Serializer(requireActivity()).save(this.contactList)
 //    }
 //
 //    override fun onResume() {
 //        super.onResume()
-//        val serializer = Serializer(requireContext())
+//        val serializer = Serializer(requireActivity())
 //        try {
 //            val list = serializer.load()
 //            // this was a poor attempt to fix the issue, did not work.
-//            for (item in list) {
-//                if (item !in this.contactList) {
-//                    this.contactList.add(item)
-//                }
-//            }
+////            for (item in list) {
+////                if (item !in this.contactList) {
+////                    this.contactList.add(item)
+////                }
+////            }
+//            this.contactList.clear()
+//            this.contactList.addAll(list)
 //            this.contactAdapter.notifyDataSetChanged()
 //        } catch (ex: IOException) {
 //            // ??

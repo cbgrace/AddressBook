@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.addCallback
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -42,9 +43,6 @@ class AddContactFragment : Fragment() {
         this.saveButton = view.findViewById(R.id.add_save_fab)
         saveButton.setOnClickListener { saveButtonHandler() }
 
-//        val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-//
-//        }
     }
 
     private fun saveButtonHandler() {
@@ -55,8 +53,12 @@ class AddContactFragment : Fragment() {
         val city = this.cityEditText.text.toString()
         val state = this.stateEditText.text.toString()
         val zip = this.zipEditText.text.toString()
-
-        val newContact = Contact(name, phone, email, street, city, state, zip)
-        (activity as MainActivity).setContact(newContact)
+        if (name == "") {
+            Toast.makeText(requireContext(),
+                "Must at least add a name!", Toast.LENGTH_SHORT).show()
+        } else {
+            val newContact = Contact(name, phone, email, street, city, state, zip)
+            (activity as MainActivity).setContact(newContact)
+        }
     }
 }
