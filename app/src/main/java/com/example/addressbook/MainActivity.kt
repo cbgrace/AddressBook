@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 
 class MainActivity : AppCompatActivity() {
 
+    private val recyclerFragment = RecyclerFragment()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        this.replaceFragment(RecyclerFragment())
+        this.replaceFragment(this.recyclerFragment)
     }
 
     fun replaceFragment(fragment: Fragment) {
@@ -23,13 +25,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setContact(contact: Contact) {
-        val recyclerFragment = RecyclerFragment()
+        this.recyclerFragment.setContact(contact)
         this.replaceFragment(recyclerFragment)
-        recyclerFragment.setContact(contact)
     }
 
     fun showContact(positionIndex: Int) {
-        RecyclerFragment().showContact(positionIndex)
+        this.recyclerFragment.showContact(positionIndex)
+    }
+
+    fun deleteContact(contact: Contact) {
+        this.recyclerFragment.deleteContact(contact)
     }
 
 }
